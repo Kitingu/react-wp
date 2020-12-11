@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, {  useReducer } from 'react';
 import axios from 'axios';
 import { GET_BLOGS, GET_USER, SET_BLOG, SET_LOADING, SET_USER } from './types';
 import BlogReducer from './blogReducer';
@@ -9,6 +9,7 @@ const BlogState = (props) => {
     user: {},
     loading: false,
     blogs: [],
+    currentBlog:{}
   };
 
   const [state, dispatch] = useReducer(BlogReducer, initialState);
@@ -19,6 +20,9 @@ const BlogState = (props) => {
     );
     dispatch({ type: GET_BLOGS, payload: res.data });
   };
+  const setBlog = async (data) =>{
+      dispatch({ type: SET_BLOG, payload: data });
+  }
 
   return (
     <BlogContext.Provider
@@ -26,6 +30,8 @@ const BlogState = (props) => {
         blogs: state.blogs,
         user: state.user,
         searchBlogs,
+        currentBlog:state.currentBlog,
+        setBlog
       }}
     >
       {props.children}

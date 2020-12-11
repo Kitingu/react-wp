@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Redirect } from 'react-router-dom';
+import BlogContext from '../context/blog/blogContext';
 import WpApiContent from '../WpApiContent';
 
-export const Blogpost = (blog) => {
+
+export const Blogpost = () => {
+  const blogContext = useContext(BlogContext);
+  const { currentBlog } = blogContext;
   return (
-    <div>
-      <WpApiContent>{blog}</WpApiContent>
+    <div className="blogpost">
+     
+      {currentBlog.content ? (
+        <WpApiContent content={currentBlog.content.rendered} />
+      ) : (
+        <Redirect to="/" />
+      )}
     </div>
   );
 };
