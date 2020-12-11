@@ -1,0 +1,40 @@
+.container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  flex-wrap: wrap;
+//   justify-content: space-between;
+}
+.blog-post {
+    position:relative;
+    margin-left: 10px;
+    p{
+        margin-top: 0;
+        font-size: 14px;
+    }
+}
+.blog-list{
+    flex-wrap: wrap;
+}
+.blog-list-img {
+  height:300px;
+  width:300px;
+}
+.blog-list-img:hover {
+  transform: scale(1.05); 
+}
+.category {
+  position: absolute;
+  top: 230px;
+//   margin-left: 20px;
+  padding: 5px 10px;
+}
+.justice{
+    background-color: #eee;
+}
+.democracy{
+    background-color: rgb(52, 54, 129);
+    color:#fff;
+}
