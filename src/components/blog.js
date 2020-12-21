@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Iframe from 'react-iframe';
 import BlogContext from '../context/blog/blogContext';
+import { HomeSlider } from './slider/slider';
 
 export const Blogs = () => {
   const blogContext = useContext(BlogContext);
@@ -9,6 +11,16 @@ export const Blogs = () => {
 
   return (
     <div>
+      <HomeSlider />
+      <div>
+        <Iframe
+          url="https://drive.google.com/file/d/1pYNKeo8pQ_BzbxCNNFo1km4KZl2wxJ-u/preview"
+          width="100%"
+          height="480"
+          className="iframe-video"
+          frameBorder="0"
+        ></Iframe>
+      </div>
       {blogs && (
         <div className="blog-container">
           {blogs.map((post) => {
@@ -30,7 +42,7 @@ export const Blogs = () => {
 
                   <p>
                     {' '}
-                    <Link
+                    <Link className="blogpost-title"
                       to={`/${post.id}`}
                       onClick={() => {
                         const data = blogs.filter(
