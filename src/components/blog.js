@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Iframe from 'react-iframe';
 import BlogContext from '../context/blog/blogContext';
@@ -7,12 +7,18 @@ import { HomeSlider } from './slider/slider';
 export const Blogs = () => {
   const blogContext = useContext(BlogContext);
   let { blogs, searchBlogs, currentBlog, setBlog } = blogContext;
-  searchBlogs();
+
+  const fetchBlogs = async () => {
+    await searchBlogs();
+  };
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
 
   return (
     <div>
       <HomeSlider />
-      <div>
+      {/* <div>
         <Iframe
           url="https://drive.google.com/file/d/1pYNKeo8pQ_BzbxCNNFo1km4KZl2wxJ-u/preview"
           width="100%"
@@ -20,7 +26,7 @@ export const Blogs = () => {
           className="iframe-video"
           frameBorder="0"
         ></Iframe>
-      </div>
+      </div> */}
       {blogs && (
         <div className="blog-container">
           {blogs.map((post) => {
@@ -42,7 +48,8 @@ export const Blogs = () => {
 
                   <p>
                     {' '}
-                    <Link className="blogpost-title"
+                    <Link
+                      className="blogpost-title"
                       to={`/${post.id}`}
                       onClick={() => {
                         const data = blogs.filter(
