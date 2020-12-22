@@ -28,8 +28,6 @@ export const HomeSlider = () => {
           : `https://via.placeholder.com/450`;
 
         return (
-          // <img src={image1} alt=""/>
-
           <SplideSlide>
             <div
               key={post.id}

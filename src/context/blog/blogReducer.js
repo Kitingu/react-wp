@@ -1,5 +1,5 @@
 import React from 'react';
-import { GET_BLOGS, GET_USER, SET_BLOG, SET_LOADING, SET_USER } from './types';
+import { GET_BLOGS, SET_BLOG, SET_LOADING, SET_USER } from '../types';
 
 const blogReducer = (state, action) => {
   switch (action.type) {
@@ -16,12 +16,7 @@ const blogReducer = (state, action) => {
         loading: false,
       };
 
-    case GET_USER:
-      return {
-        ...state,
-        user: action.payload,
-        loading: false,
-      };
+
     case SET_BLOG:
       return {
         ...state,

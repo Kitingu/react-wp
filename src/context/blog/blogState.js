@@ -1,12 +1,11 @@
 import React, {  useReducer } from 'react';
 import axios from 'axios';
-import { GET_BLOGS, GET_USER, SET_BLOG, SET_LOADING, SET_USER } from './types';
+import { GET_BLOGS, SET_BLOG } from '../types';
 import BlogReducer from './blogReducer';
 import BlogContext from './blogContext';
 
 const BlogState = (props) => {
   const initialState = {
-    user: {},
     loading: false,
     blogs: [],
     currentBlog:{}

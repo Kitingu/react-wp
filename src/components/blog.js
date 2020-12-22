@@ -1,20 +1,32 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Iframe from 'react-iframe';
 import BlogContext from '../context/blog/blogContext';
 import { HomeSlider } from './slider/slider';
+import UserContext from '../context/user/userContext';
+
 
 export const Blogs = () => {
   const blogContext = useContext(BlogContext);
-  let { blogs, searchBlogs, currentBlog, setBlog } = blogContext;
+  let { blogs, searchBlogs, setBlog } = blogContext;
+
+  const userContext = useContext(UserContext);
+  const {
+
+    setUserBlogs,
+    setUser,
+    users,
+    searchUsers,
+  } = userContext;
 
   const fetchBlogs = async () => {
     await searchBlogs();
   };
   useEffect(() => {
     fetchBlogs();
+    searchUsers();
   }, []);
-
+  console.log(users);
   return (
     <div>
       <HomeSlider />
@@ -68,7 +80,21 @@ export const Blogs = () => {
                       month: 'short',
                       year: 'numeric',
                     })}{' '}
-                    | {post.x_author}
+                    |{' '}
+                    <Link
+                      className="author"
+                      to={`/author/${post.author}`}
+                      onClick={() => {
+                        const user = users.filter(
+                          (data) => data.id === post.author
+                        );
+
+                        setUser(user[0]);
+                        setUserBlogs(user[0], blogs);
+                      }}
+                    >
+                      {post.x_author}
+                    </Link>
                   </p>
                 </div>
               </div>
