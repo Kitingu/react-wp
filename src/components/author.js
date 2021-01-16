@@ -14,7 +14,7 @@ const Author = () => {
           <div className="profile-image">
             <img
               src={userBlogs[0].x_gravatar}
-              alt="asdf"
+              alt="author"
               
             />{' '}
             <p>{currentUser.name}</p>

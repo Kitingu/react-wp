@@ -1,0 +1,18 @@
+.blogpost {
+  a,
+  a:visited,
+  a:hover,
+  a:active {
+    text-decoration: none;
+    color:#7384A0;
+    font-weight: bold;
+  }
+  .blogpost-author{
+      color:#7384A0;
+      text-transform: capitalize;
+  }
+  .blog-title{
+      color: #402A79;
+      font-weight: bold;
+  }
+}
