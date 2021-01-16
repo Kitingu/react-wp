@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
-
 import BlogContext from '../../context/blog/blogContext';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 
@@ -20,6 +19,7 @@ export const HomeSlider = () => {
         // height: '500px',
         type: 'loop',
         pagination: false,
+        autoplay:5000
       }}
     >
       {sliderposts.map((post) => {
@@ -28,9 +28,8 @@ export const HomeSlider = () => {
           : `https://via.placeholder.com/450`;
 
         return (
-          <SplideSlide>
+          <SplideSlide key={post.id}>
             <div
-              key={post.id}
               className="slider-content-container"
               style={{
                 backgroundImage: `url(${featuredImage})`,

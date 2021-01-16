@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import UserContext from '../context/user/userContext';
 import WpApiContent from '../WpApiContent';
-
+import '../styles/author.scss';
 const Author = () => {
   const userContext = useContext(UserContext);
   const { currentUser, userBlogs } = userContext;
@@ -11,18 +11,18 @@ const Author = () => {
     <div className="author-container">
       {currentUser.name ? (
         <div>
-          <p>{currentUser.name}</p>
-          <p>
+          <div className="profile-image">
+            <img
+              src={userBlogs[0].x_gravatar}
+              alt="asdf"
+              
+            />{' '}
+            <p>{currentUser.name}</p>
+          </div>
+          <p className= "about-author">About the author:</p>
+          <p className="author-details">
             <WpApiContent content={currentUser.description} />
           </p>
-          <p>{userBlogs.length}</p>
-          <img
-            src={userBlogs[0].x_gravatar}
-            alt="asdf"
-            style={{
-              borderRadius: '50%',
-            }}
-          />{' '}
         </div>
       ) : (
         <Redirect to="/" />

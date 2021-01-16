@@ -1,0 +1,23 @@
+.author-container{
+    margin: auto;
+    width: 90%;
+}
+.profile-image {
+display: flex;
+align-items: baseline;
+flex-wrap: wrap;
+img{
+    height:200px;
+    width: 200px;
+    border-radius: 50%;
+}
+p{
+    color: #7285A5;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+}
+
+.about-author{
+    font-weight: bold;
+}
